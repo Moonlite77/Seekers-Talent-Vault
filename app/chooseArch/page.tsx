@@ -18,7 +18,7 @@ export default async function ChooseArch(){
     const clerkUser = user?.id
     console.log(`Clerk userID is ${clerkUser}`)
 
-    const result =  getBasicData(clerkUser)
+    const result =  await getBasicData(clerkUser)
     console.log(result)
 
     return(

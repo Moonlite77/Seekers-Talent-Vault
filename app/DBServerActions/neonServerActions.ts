@@ -3,16 +3,10 @@
 import { neon } from "@neondatabase/serverless"
 
 
-const sql = neon(process.env.DATABASE_URL!)
+const sql = neon(`${process.env.DATABASE_URL}`);
 
 export async function getBasicData(clerkID: string | undefined){
-    if(clerkID == undefined){
-        return({success: false, error: 'clerkID was undefined'})
-    }
-    const result = await sql`
-    SELECT * FROM clerks WHERE clerk_id = ${clerkID};
-    `
-
+    const result = await sql`SELECT * FROM clerks WHERE clerk_id = ${clerkID}`
     return(
         result
     )
