@@ -1,8 +1,8 @@
-'use client'
+'use server'
 
 import { getBasicData, createUser, updateArch } from "@/app/DBServerActions/neonServerActions"
-import { useRouter } from "next/navigation"
-import { useUser } from "@clerk/nextjs"
+import RoutePusher from "../custom-components/routePusher";
+import { currentUser } from '@clerk/nextjs/server'
 //pull basic information for the clerk_id in question
 
 // if clerk_id is there and they have an avatar_url -> send them to town
@@ -12,21 +12,23 @@ import { useUser } from "@clerk/nextjs"
 
 
 
-export default function ChooseArch(){
+export default async function ChooseArch(){
 
-    const { user } = useUser();
-    const router = useRouter();
-
+    const user = await currentUser();
     const clerkUser = user?.id
+    console.log(`Clerk userID is ${clerkUser}`)
+
+    const result =  getBasicData(clerkUser)
+    console.log(result)
 
     function seekerClick() {
         console.log('seeker!');
-        router.push('/seeker-onboard')
+        RoutePusher('/seeker-onboard')
     }
 
         function champClick() {
         console.log('Champion!');
-        router.push('/talent-onboard')
+        RoutePusher('/talent-onboard')
     }
     return(
         <>
