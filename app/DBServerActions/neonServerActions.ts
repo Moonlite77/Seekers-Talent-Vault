@@ -13,15 +13,14 @@ export async function getBasicData(clerkID: string | undefined){
     )
 }
 
-export async function createUser(clerkID: string){
-
+export async function createUser(clerkID: string | undefined){
     const result = await sql`
     INSERT INTO clerks (clerk_id)
     VALUES (${clerkID})
     `
-
+    const response = result[0]
     return(
-        result
+        response
     )
 }
 
