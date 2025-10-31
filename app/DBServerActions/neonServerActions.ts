@@ -7,8 +7,9 @@ const sql = neon(`${process.env.DATABASE_URL}`);
 
 export async function getBasicData(clerkID: string | undefined){
     const result = await sql`SELECT * FROM clerks WHERE clerk_id = ${clerkID}`
+    const response = result[0]
     return(
-        result
+        response
     )
 }
 
