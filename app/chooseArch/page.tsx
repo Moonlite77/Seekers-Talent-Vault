@@ -1,7 +1,7 @@
 'use server'
 
 import { getBasicData, createUser, updateArch } from "@/app/DBServerActions/neonServerActions"
-import RoutePusher from "../custom-components/routePusher";
+import { SeekerButton, ChampButton } from "./archButtons";
 import { currentUser } from '@clerk/nextjs/server'
 //pull basic information for the clerk_id in question
 
@@ -21,20 +21,11 @@ export default async function ChooseArch(){
     const result =  getBasicData(clerkUser)
     console.log(result)
 
-    function seekerClick() {
-        console.log('seeker!');
-        RoutePusher('/seeker-onboard')
-    }
-
-        function champClick() {
-        console.log('Champion!');
-        RoutePusher('/talent-onboard')
-    }
     return(
         <>
             <div className="text-white z-2">Choose Your Archetype</div>
-            <button className="text-white z-2" onClick={seekerClick}> Seeker </button>
-            <button className="text-white z-2" onClick={champClick}> Champion </button>
+            <SeekerButton />
+            <ChampButton />
         </>
     )
 }
