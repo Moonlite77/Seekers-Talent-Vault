@@ -1,6 +1,6 @@
 'use server'
 
-//import { getBasicData, createUser, updateArch } from "@/app/DBServerActions/neonServerActions"
+import { getBasicData, createUser, updateArch } from "@/app/DBServerActions/neonServerActions"
 import { SeekerButton, ChampButton } from "./archButtons";
 import { currentUser } from '@clerk/nextjs/server'
 //pull basic information for the clerk_id in question
@@ -18,8 +18,8 @@ export default async function ChooseArch(){
     const clerkUser = user?.id
     console.log(`Clerk userID is ${clerkUser}`)
 
-    //const result =  getBasicData(clerkUser)
-    //console.log(result)
+    const result =  getBasicData(clerkUser)
+    console.log(result)
 
     return(
         <>
