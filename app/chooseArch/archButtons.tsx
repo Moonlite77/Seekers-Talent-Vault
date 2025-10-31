@@ -1,23 +1,16 @@
 'use client'
 
-import RoutePusher from "../custom-components/routePusher"
+import Link from "next/link";
 
 export function SeekerButton(){
-    function seekerClick() {
-        console.log('seeker!');
-        RoutePusher('/seeker-onboard')
-    }
     return(
-        <button className="text-white z-2" onClick={seekerClick}> Seeker </button>
+        <Link className="text-white z-2" href={'/seeker-onboard'}> Seeker </Link>
     )
 }
 
 export function ChampButton(){
-    function champClick() {
-        console.log('Champion!');
-        RoutePusher('/talent-onboard')
-    }
+
     return(
-        <button className="text-white z-2" onClick={champClick}> Seeker </button>
+        <Link className="text-white z-2" href={'/talent-onboard'}> Champion </Link>
     )
 }
