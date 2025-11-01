@@ -4,7 +4,7 @@ import { currentUser } from '@clerk/nextjs/server'
 import { getBasicData, } from "@/app/DBServerActions/neonServerActions"
 
 
-const isProtectedRoute = createRouteMatcher(['/chooseArch(.*)', '/seeker-onboard(.*)', '/talent-onboard(.*)', '/town(.*)',])
+const isProtectedRoute = createRouteMatcher(['/chooseArch(.*)', '/seeker-onboard(.*)', '/talent-onboard(.*)', '/town(.*)','/pre-boarding(.*)',])
 
 export default clerkMiddleware(async (auth, req) => {
   if (isProtectedRoute(req)) await auth.protect()
@@ -17,12 +17,12 @@ export default clerkMiddleware(async (auth, req) => {
   }*/
 })
 
-export function proxy(request: NextRequest) {
-  if (request.url === '/chooseArch') {
-    request.nextUrl.pathname = '/town'
-    return NextResponse.redirect(request.nextUrl)
-  }
-}
+//export function proxy(request: NextRequest) {
+  //if (request.url === '/chooseArch') {
+    //request.nextUrl.pathname = '/town'
+    //return NextResponse.redirect(request.nextUrl)
+  //}
+//}
 
 export const config = {
   matcher: [
