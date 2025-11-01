@@ -1,5 +1,5 @@
 import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';
-import { NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 import { currentUser } from '@clerk/nextjs/server'
 import { getBasicData, } from "@/app/DBServerActions/neonServerActions"
 
@@ -16,6 +16,13 @@ export default clerkMiddleware(async (auth, req) => {
     return NextResponse.rewrite(new URL('/town', req.url))
   }*/
 })
+
+export function proxy(request: NextRequest) {
+  if (request.url === '/chooseArch') {
+    request.nextUrl.pathname = '/town'
+    return NextResponse.redirect(request.nextUrl)
+  }
+}
 
 export const config = {
   matcher: [
