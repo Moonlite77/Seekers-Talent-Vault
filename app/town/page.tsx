@@ -1,5 +1,5 @@
 export default function Vault(){
     return(
-        <div>Welcome! Stay a little!</div>
+        <div className="z-2 text-white">Welcome! Stay a little!</div>
     )
 }

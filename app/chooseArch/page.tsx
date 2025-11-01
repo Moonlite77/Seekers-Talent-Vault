@@ -3,14 +3,7 @@
 import { getBasicData, createUser, updateArch } from "@/app/DBServerActions/neonServerActions"
 import { SeekerButton, ChampButton } from "./archButtons";
 import { currentUser } from '@clerk/nextjs/server'
-//pull basic information for the clerk_id in question
-
-// if clerk_id is there and they have an avatar_url -> send them to town
-// if there's no user -> create the user, continue choosing
-
-//when user clicks on either champion or seeker, update the DB and continue to onboarding
-
-
+import RoutePusher from "../custom-components/routePusher";
 
 export default async function ChooseArch(){
 
@@ -19,8 +12,12 @@ export default async function ChooseArch(){
     console.log(`Clerk userID is ${clerkUser}`)
 
     const result =  await getBasicData(clerkUser)
-    console.log(result)
+    console.log(result['archetype'])
 
+    //if user has an archetype, send them to town
+    if(result.archetype){
+        RoutePusher('/town')
+    }
     //If a user doesn't exist, result evaluates to undefined
     //then INSERT the user into the table if the user doesn't exist.
     if (!result){
