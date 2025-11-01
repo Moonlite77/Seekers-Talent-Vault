@@ -15,9 +15,9 @@ export default async function ChooseArch(){
     console.log(result['archetype'])
 
     //if user has an archetype, send them to town
-    if(result.archetype){
-        RoutePusher('/town')
-    }
+    //if(result.archetype){
+        //RoutePusher('/town')
+    //}
     //If a user doesn't exist, result evaluates to undefined
     //then INSERT the user into the table if the user doesn't exist.
     if (!result){
