@@ -8,13 +8,13 @@ const isProtectedRoute = createRouteMatcher(['/chooseArch(.*)', '/seeker-onboard
 
 export default clerkMiddleware(async (auth, req) => {
   if (isProtectedRoute(req)) await auth.protect()
-  if (req.nextUrl.pathname.startsWith('/chooseArch')){
+  /*if (req.nextUrl.pathname.startsWith('/chooseArch')){
     const user = await currentUser();
     const clerkUser = user?.id
     const result =  await getBasicData(clerkUser)
     console.log(result['archetype'])
     return NextResponse.rewrite(new URL('/town', req.url))
-  }
+  }*/
 })
 
 export const config = {
