@@ -1,8 +1,8 @@
 'use server'
 
 import { currentUser } from "@clerk/nextjs/server";
-import { getBasicData } from "../DBServerActions/neonServerActions";
-import PBComponent from "../dbServerComponents/pre-boardingComponent";
+import { getArchetypeData } from "../DBServerActions/neonServerActions";
+import PBComponent from "../dbClientComponents/pre-boardingComponent";
 import { Suspense } from 'react'
 
 
@@ -10,12 +10,11 @@ import { Suspense } from 'react'
 export default async function PreboardingComponent(){
     const user = await currentUser()
     const userID = user?.id
-    const result = await getBasicData(userID)
-    const resultingArch = result['archetype']
+    const result = getArchetypeData(userID)
     return(
         <div>
             <Suspense fallback={<div>Loading...</div>}>
-                <PBComponent archetype={resultingArch} ></PBComponent>
+                <PBComponent archetype={result} ></PBComponent>
             </Suspense>        
         </div>
     )

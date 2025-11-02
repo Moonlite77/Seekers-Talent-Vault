@@ -13,6 +13,15 @@ export async function getBasicData(clerkID: string | undefined){
     )
 }
 
+export async function getArchetypeData(clerkID: string | undefined){
+    const result = await sql`SELECT * FROM clerks WHERE clerk_id = ${clerkID}`
+    const response = result[0]
+    const archetype: string = response['archetype']
+    return(
+        archetype
+    )
+}
+
 export async function createUser(clerkID: string | undefined){
     const result = await sql`
     INSERT INTO clerks (clerk_id)
