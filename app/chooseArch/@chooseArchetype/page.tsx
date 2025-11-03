@@ -11,7 +11,9 @@ export default async function chooseArchPage(){
                         cardLink="/seeker-onboard" 
                         cardText="For the schrewd recruiter or talent seeker."
                             />
-                    <div className="justify-items-center items-center text-white">Choose Your Archetype</div>
+                    <div className="grid justify-items-center items-center text-white">
+                        <div>Choose your archetype </div>
+                    </div>
                     <LinkCard
                         imageSrc="https://imagedelivery.net/_3BvaaU0nebybABLZIjMPA/b4869a9d-6cd3-496e-416e-2d3ae143c200/public"
                         cardLink="/talent-onboard" 
