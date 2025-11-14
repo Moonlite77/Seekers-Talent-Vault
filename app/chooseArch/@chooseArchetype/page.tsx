@@ -8,7 +8,7 @@ export default async function chooseArchPage(){
                     
                     <LinkCard
                         imageSrc="https://imagedelivery.net/_3BvaaU0nebybABLZIjMPA/9a03db4c-fbeb-461c-e0ae-6090a2760000/public"
-                        cardLink="/create-seeker" 
+                        cardLink="/chooseArch/create-seeker" 
                         cardText="For the schrewd recruiter or talent seeker."
                         cardTitle="Seeker"
                             />
@@ -17,7 +17,7 @@ export default async function chooseArchPage(){
                     </div>
                     <LinkCard
                         imageSrc="https://imagedelivery.net/_3BvaaU0nebybABLZIjMPA/b4869a9d-6cd3-496e-416e-2d3ae143c200/public"
-                        cardLink="/create-champion" 
+                        cardLink="/chooseArch/create-champion" 
                         cardText="For the talented individuals who seek opportunities."
                         cardTitle="Champion"
                             />
