@@ -36,7 +36,7 @@
 
 @layer components {
     .ethcard {
-        @apply h-7/10 w-9/10 grid p-5 rounded-xl shadow-xl/30 shadow-xl/30 shadow-red-800/40
+        @apply z-3 h-7/10 w-9/10 grid p-5 rounded-xl shadow-xl/30 shadow-xl/30 shadow-red-800/40
     }
     .importantButton {
         @apply bg-red-700 px-2 font-bold rounded-full border transition-all duration-200 inset-shadow-sm inset-shadow-stone-100/20 hover:bg-red-800 hover:ring-1 active:ring-2 active:ring-red-500/70
