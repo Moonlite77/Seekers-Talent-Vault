@@ -6,15 +6,21 @@ import { neon } from "@neondatabase/serverless"
 const sql = neon(`${process.env.DATABASE_URL}`);
 
 export async function getBasicData(clerkID: string | undefined){
-    const result = await sql`SELECT * FROM clerks WHERE clerk_id = ${clerkID}`
-    const response = result[0]
-    return(
-        response
-    )
+    try {
+        const result = await sql`SELECT * FROM clerks WHERE clerk_id = ${clerkID}`
+        return(
+            result[0]
+        )
+    } catch(error: any){
+        console.error("Database error:", error.message);
+        throw new Error("Neon server action failed to get basic data. Maybe the user does not exist")
+    }
+
 }
 
 export async function getArchetypeData(clerkID: string | undefined){
-    const result = await sql`SELECT * FROM clerks WHERE clerk_id = ${clerkID}`
+    const result = await sql`
+        SELECT * FROM clerks WHERE clerk_id = ${clerkID}`
     const response = result[0]
     const archetype: string = response['archetype']
     return(
@@ -23,14 +29,17 @@ export async function getArchetypeData(clerkID: string | undefined){
 }
 
 export async function createUser(clerkID: string | undefined){
-    const result = await sql`
+    try {    const result = await sql`
     INSERT INTO clerks (clerk_id)
     VALUES (${clerkID})
+    RETURNING *
     `
-    const response = result[0]
-    return(
-        response
-    )
+    return(result[0])
+    } catch (error: any){
+        console.error("Database error:", error.message);
+        throw new Error("Failed to create user");
+    }
+
 }
 
 export async function updateArch(clerkID: string, archetype: string){
